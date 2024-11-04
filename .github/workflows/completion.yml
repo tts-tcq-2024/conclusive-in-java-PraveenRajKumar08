@@ -10,5 +10,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+     - name: Show script contents
+      run: cat ./.github/workflows/check-complete.sh
+
+    - name: Make script executable
+      run: chmod +x ./.github/workflows/check-complete.sh
+
     - name: all entries made
       run: bash ./.github/workflows/check-complete.sh
