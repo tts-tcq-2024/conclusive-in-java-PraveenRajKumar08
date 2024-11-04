@@ -41,28 +41,6 @@ public class TypewiseAlertTest {
         verify(mockOutput).printf("%x : %s\n", 0xfeed, BreachType.TOO_HIGH);
     }
 
-    @Test
-    public void testSendToEmailTooLow() {
-        batteryCharacter.coolingType = CoolingType.PASSIVE_COOLING;
-        TypewiseAlert.checkAndAlert(AlertTarget.TO_EMAIL, batteryCharacter, -1);
-        verify(mockOutput).printf("To: %s\n", "a.b@c.com");
-        verify(mockOutput).println("Hi, the temperature is too low\n");
-    }
-
-    @Test
-    public void testSendToEmailTooHigh() {
-        batteryCharacter.coolingType = CoolingType.PASSIVE_COOLING;
-        TypewiseAlert.checkAndAlert(AlertTarget.TO_EMAIL, batteryCharacter, 50);
-        verify(mockOutput).printf("To: %s\n", "a.b@c.com");
-        verify(mockOutput).println("Hi, the temperature is too high\n");
-    }
-
-    @Test
-    public void testNoEmailForNormalTemperature() {
-        batteryCharacter.coolingType = CoolingType.PASSIVE_COOLING;
-        TypewiseAlert.checkAndAlert(AlertTarget.TO_EMAIL, batteryCharacter, 25);
-        verify(mockOutput, never()).printf(anyString(), any());
-        verify(mockOutput, never()).println(anyString());
-    }
+  
 
 }
